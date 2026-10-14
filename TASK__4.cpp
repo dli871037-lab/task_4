@@ -52,8 +52,7 @@ int main() {
 
     if (tempCoord > t_c) {
       wallCoord = (tempCoord - t1) / (t_c - t1) * wide1;
-    }
-    else {
+    } else {
       wallCoord = (tempCoord - t_c) / (t2 - t_c) * wide2 + wide1;
     }
 
