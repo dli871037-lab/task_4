@@ -15,8 +15,6 @@ int main() {
   constexpr int countOfEmptyPlace = 60;
   constexpr int finishStep = 4;
 
-  int finishStep;
-
   double t1, t2, wide1, wide2, lambda1, lambda2,
          wallCoord, thermalCond1, thermalCond2, t_c;
 
