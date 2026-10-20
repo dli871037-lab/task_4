@@ -13,6 +13,7 @@ int main() {
 
   constexpr int countOfDigitsAfterPoint = 3;
   constexpr int countOfEmptyPlace = 60;
+  constexpr int finishStep = 4;
 
   int finishStep;
 
@@ -40,8 +41,6 @@ int main() {
        << setprecision(countOfDigitsAfterPoint)
        << "Temperature at the layer interface: " << t_c << endl
        << setw(countOfEmptyPlace) << "x" << endl;
-
-  finishStep = 4; 
 
   for (int iterations = 0; iterations < finishStep; ++iterations) {
 
