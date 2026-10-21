@@ -13,10 +13,10 @@ int main() {
 
   constexpr int countOfDigitsAfterPoint = 3;
   constexpr int countOfEmptyPlace = 60;
-  constexpr int finishStep = 4;
 
-  double t1, t2, wide1, wide2, lambda1, lambda2,
-         wallCoord, thermalCond1, thermalCond2, t_c;
+  double t1, t2, wide1, wide2, lambda1, lambda2, tempCoord,
+         wallCoord, thermalConductance1, thermalConductance2, tc;
+  int temperatureCount;
 
   cout << "Inner wall temperature, C: ";
   cin >> t1;
@@ -30,27 +30,28 @@ int main() {
   cin >> lambda1;
   cout << "Outer layer thermal conductivity: ";
   cin >> lambda2;
+  cout << "Count of temperatures: ";
+  cin >> temperatureCount;
+  cout << "1 temperature in coordinate: ";
 
-  thermalCond1 = lambda1 / wide1;
-  thermalCond2 = lambda2 / wide2;
-  t_c = (thermalCond1 * t1 + thermalCond2 * t2) / (thermalCond1 + thermalCond2);
+  thermalConductance1 = lambda1 / wide1;
+  thermalConductance2 = lambda2 / wide2;
+  tc = (thermalConductance1 * t1 + thermalConductance2 * t2) / (thermalConductance1 + thermalConductance2);
 
   cout << endl
        << setprecision(countOfDigitsAfterPoint)
-       << "Temperature at the layer interface: " << t_c << endl
+       << "Temperature at the layer interface: " << tc << endl
        << setw(countOfEmptyPlace) << "x" << endl;
 
-  for (int iterations = 0; iterations < finishStep; ++iterations) {
-
-    double tempCoord;
+  for (int temperatureIndex = 0; temperatureIndex < temperatureCount; ++temperatureIndex) {
 
     cout << "The temperature of the wall at the location: ";
     cin >> tempCoord;
 
-    if (tempCoord > t_c) {
-      wallCoord = (tempCoord - t1) / (t_c - t1) * wide1;
+    if (tempCoord > tc) {
+      wallCoord = (tempCoord - t1) / (tc - t1) * wide1;
     } else {
-      wallCoord = (tempCoord - t_c) / (t2 - t_c) * wide2 + wide1;
+      wallCoord = (tempCoord - tc) / (t2 - tc) * wide2 + wide1;
     }
 
     cout << setw(countOfEmptyPlace) << wallCoord / 100.0 << endl;
